@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('./partials/head') %>
+        <title>Add new Blog</title>
+</head>
+
+<body>
+    <%-include('./partials/navbar') %>
+        <div class="container mx-auto mt-5">
+            <form action="/blog" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Cover Image</label>
+                    <input type="file" class="form-control" id="exampleInputEmail1" name="coverImage">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Body</label>
+                    <textarea class="form-control" placeholder="Add your Body here" id="floatingTextarea" name="body"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+        <%-include('./partials/foot') %>
+</body>
+
+</html>

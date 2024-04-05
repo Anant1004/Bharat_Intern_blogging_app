@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('./partials/head') %>
+        <title>blog</title>
+</head>
+
+<body>
+    <%-include('./partials/navbar') %>
+        <div class="container mt-5">
+            <h1><%= blog.title %></h1>
+            <img src="<%= blog.coverImageURL %>" alt="" width="300px">
+            <p class="mt-5"><%= blog.body %></p>
+        </div>
+        <div class="container mt-2 flex align-items-center gap-2">
+            <img src="<%= blog.createdBy.profileImageURL %>" width="50px">
+            <h4>Author:- <%= blog.createdBy.fullName %></h4>
+        </div>
+        <div class="container mt-3">
+            <h1>Comments (<%= comments.length %>)</h1>
+            <% if (locals.user) { %>
+                <form action="/blog/comment/<%= blog._id %> " method="post">
+                    <div class="mb-3">
+                        <input type="text" name="content" class="form-control" placeholder="comment here">
+                        <button type="submit" class="btn btn-sm btn-success mt-3 ">comment</button>
+                    </div>
+                </form>
+            <% } %>
+            <div class="mt-1">
+                <% comments.forEach(comment => { %>
+                    <div>
+                        <img src="<%= comment.createdBy.profileImageURL %>" width="50px">
+                        <p><%= comment.createdBy.fullName %></p>
+                        <p><%= comment.content %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+        <%-include('./partials/foot') %>
+</body>
+
+</html>
