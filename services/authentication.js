@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken');
 
-const secret = 'Blogity#token@123';
+const secret = process.env.SECRET_TOKEN;
 
 function createTokenforUser(user) {
     const payload = {
